@@ -26,6 +26,7 @@ first_page = file_handle[0]
 #pix = fitz.Pixmap(black_image_file)
 #first_page.insertImage(image_rectangle, pixmap=pix, overlay=True)
 #https://pymupdf.readthedocs.io/en/latest/rect/
+#TODO: Scaricare 9 immagini in hd da scryfall e cercare di metterle nel foglio, in modo che non si sovrappongano
 first_page.insertImage(fitz.Rect(450, 20, 550, 120), pixmap=fitz.Pixmap(black_image_file), overlay=True)
 first_page.insertImage(fitz.Rect(50, 20, 350, 120), pixmap=fitz.Pixmap(blue_image_file), overlay=True)
 #Se cambio il nome dell'output funziona
