@@ -4,10 +4,11 @@ import fitz
 import os
 from shutil import copyfile
 from fpdf import FPDF
-filename = 'output.pdf'
+filename = 'blank.pdf'
+output_file='output.pdf'
 dirpath =os.path.dirname(__file__)
 filepath = os.path.join(dirpath, filename)
-
+output_filepath=os.path.join(dirpath,output_file)
 # Creo il file pdf
 pdf = FPDF(orientation='P', unit='mm', format='A4')
 pdf.output(filepath)
@@ -22,7 +23,9 @@ image_rectangle = fitz.Rect(450, 20, 550, 120)
 file_handle = fitz.open(filepath)
 first_page = file_handle[0]
 # add the image
-pix = fitz.Pixmap(black_image_file)
-first_page.insertImage(image_rectangle, pixmap=pix, overlay=True)
+#pix = fitz.Pixmap(black_image_file)
+#first_page.insertImage(image_rectangle, pixmap=pix, overlay=True)
+first_page.insertImage(fitz.Rect(450, 20, 550, 120), pixmap=fitz.Pixmap(black_image_file), overlay=True)
+first_page.insertImage(fitz.Rect(250, 20, 550, 120), pixmap=fitz.Pixmap(blue_image_file), overlay=True)
 #Se cambio il nome dell'output funziona
-file_handle.save(filepath,incremental=True)
+file_handle.save(output_filepath)
